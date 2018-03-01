@@ -1,21 +1,26 @@
 from bs4 import BeautifulSoup
-import urllib
+import urllib.request
+from py_thesaurus import Thesaurus
+from random import shuffle
 
 URL = 'http://lite.cnn.com/'
 
-r = urllib.urlopen(URL).read()
+r = urllib.request.urlopen(URL).read()
 soup = BeautifulSoup(r, 'html.parser')
 
-# print soup.prettify()
-# result = soup.find('div', class_='afe4286c')
-
 headlines = [item.text for item in soup.select('div.afe4286c li a')]
-headlines.sort()
-print '\n'.join(headlines)
+shuffle(headlines)
 
 
-# href_tags = soup.select('div.afe4286c li a')
-# print href_tags[0]['href']
-# links = [item.href for item in soup.select('div.afe4286c li a')]
+def maybe_synonym(word):
+    synonyms = Thesaurus(word).get_synonym()
+    if(len(synonyms) is 0):
+        return word
+    else:
+        return synonyms[0]
+
+random = headlines[0]
+print(random)
+print(' '.join([maybe_synonym(word) for word in random.split(' ')]))
 
 
