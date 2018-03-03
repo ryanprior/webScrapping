@@ -1,6 +1,6 @@
 # Webscrapping: recycle the web
 
-This is a joint project of @ryanprior and @ckshobha created at Madison Python's inaugural Pair Programming Night.
+This is a joint project of @ryanprior and @ckshobha, created at Madison Python's inaugural Pair Programming Night.
 
 It downloads headlines from CNN, replacing the words with synonyms to create familiar-sounding phrases that are often surreal and nonsensical.
 
